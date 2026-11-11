@@ -1,0 +1,5 @@
+{
+  "name": "mce_chat",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "postCreateCommand": "npm install"
+}

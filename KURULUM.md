@@ -2,11 +2,55 @@
 
 Bu rehber, uygulamayı sıfırdan iPhone'una kurana kadar yapman gereken her şeyi sırayla anlatır.
 
-**Gerekenler:** bir Google hesabı, bir Apple hesabı, bir kredi/banka kartı, Windows (ya da herhangi bir) bilgisayar, iPhone.
+**Gerekenler:** bir Google hesabı, bir Apple hesabı, bir kredi/banka kartı, iPhone. Bilgisayar şart değil.
 
-**Sıra:** A (Firebase) → B (ayarları koda yapıştır) → C (bilgisayarı hazırla) → D (ücretsiz deneme, önerilir) → E (Apple üyeliği) → F (derle ve gönder) → G (telefona kur).
+**İki yol var:**
 
-> Firebase ve Expo ekranlarındaki düğme adları zamanla küçük değişiklikler gösterebilir. Bir adımda takılırsan ekranda ne gördüğünü Claude'a yaz.
+- **Bilgisayarsız (telefondan):** A → B → E → aşağıdaki "Telefondan kurulum" bölümü → G.
+- **Bilgisayarla:** A → B → C → D → E → F → G.
+
+> Firebase, Expo ve Apple ekranlarındaki düğme adları zamanla küçük değişiklikler gösterebilir. Bir adımda takılırsan ekranda ne gördüğünü Claude'a yaz.
+
+---
+
+## Telefondan kurulum (bilgisayarsız)
+
+Önce A, B ve E adımları tamam olmalı (Firebase hazır, ayarlar kodda, Apple Developer üyeliği onaylı). Ayrıca <https://expo.dev/signup> adresinden ücretsiz bir Expo hesabı aç.
+
+### 1. yol: Expo Launch (tarayıcıdan, terminal yok)
+
+Expo Launch, GitHub deposunu alıp imzalama, derleme ve TestFlight'a gönderme işini tarayıcıdan yapar.
+
+1. iPhone'da Safari ile şu bağlantıyı aç:
+
+   <https://launch.expo.dev/?github=https://github.com/ulkn/mce_chat&projectName=mce-chat&appName=MCE+Chat&appBundleId=com.ulkn.mcechat>
+
+2. Hedef olarak **App Store** (TestFlight) seç.
+3. Expo hesabınla giriş yap.
+4. Apple hesabınla giriş yap; telefona gelen 6 haneli kodu gir.
+5. Uygulama adı ve kimliği dolu gelir (`MCE Chat`, `com.ulkn.mcechat`). "Bu ad kullanılıyor" derse adı değiştir (örn. sonuna bir kelime ekle); bu ad yalnızca App Store Connect'te görünür, telefondaki simgenin altında yine "Yaren" yazar.
+6. **Launch** de ve bitmesini bekle. Bitince G adımına geç.
+
+**Depo özel olduğu için okuyamazsa:** Expo Launch belgelerinde yalnızca herkese açık depolar anlatılıyor. Erişemediğini söylerse GitHub'da **Settings > General > Danger Zone > Change repository visibility > Public** yap, Launch'ı tekrar dene, derleme bitince aynı yerden **Private**'a geri al. Depoda şifre ya da gizli anahtar yok; Firebase ayarları zaten her uygulamanın içinde açık duran türdendir. Yine de açık kaldığı sürece kodu herkes görebilir.
+
+### 2. yol: Tarayıcıda terminal (Launch olmazsa)
+
+GitHub Codespaces, tarayıcıda çalışan hazır bir bilgisayar verir (kişisel hesaplarda aylık ücretsiz kota var). Telefonda ekran dar ama yazılacak tek bir komut var.
+
+1. Safari ile <https://codespaces.new/ulkn/mce_chat> adresini aç, **Create codespace** de. Açılması ve kurulumun bitmesi birkaç dakika sürer.
+2. Altta **Terminal** bölümü görünür (görünmezse sol üstteki menü > Terminal > New Terminal). Şunu yaz:
+
+   ```
+   npm run yayinla
+   ```
+
+3. Sırayla: Expo kullanıcı adı ve şifren, "create a project" sorusuna `y`, sonra F3'teki tabloda yazan Apple soruları gelir.
+4. Derleme sıraya girince sekmeyi kapatabilirsin; derleme Expo'nun sunucularında sürer. İş bitince <https://github.com/codespaces> adresinden codespace'i **Delete** ile sil ki kotanı harcamasın.
+
+### Bilgisayarsız yolda atlananlar
+
+- **D adımı (Expo Go ile ücretsiz deneme) yapılamaz;** uygulamayı ilk kez TestFlight'tan kurunca göreceksin. Bir hata çıkarsa Claude düzeltir, sen aynı yolu tekrar çalıştırırsın.
+- 90 günlük yenilemede de aynı yolu (Launch bağlantısı ya da `npm run yayinla`) tekrar kullanırsın.
 
 ---
 

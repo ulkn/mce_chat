@@ -24,7 +24,7 @@ Arkadaş çevresi için mesajlaşma uygulaması. Expo (React Native) + Firebase 
 
 ## Kurulum
 
-**Her adımın tek tek anlatıldığı ayrıntılı rehber: [KURULUM.md](KURULUM.md).** Aşağısı kısa özettir.
+**Her adımın tek tek anlatıldığı ayrıntılı rehber: [KURULUM.md](KURULUM.md).** Bilgisayar olmadan, yalnızca telefondan kurmanın yolu da orada. Aşağısı kısa özettir.
 
 Sırayla üç iş var: Firebase projesini aç, ayarları koda yapıştır, uygulamayı derleyip TestFlight'a gönder.
 
