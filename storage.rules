@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Profil fotoğrafları: herkes (giriş yapmış) görebilir, yalnızca sahibi yükleyebilir.
+    match /avatars/{uid}/{fileName} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Sohbet dosyaları: her kullanıcı yalnızca kendi klasörüne yükler (en fazla 25 MB) ve kendi dosyasını siler.
+    // Dosya adları rastgele üretilir; okuma için giriş yapmış olmak gerekir.
+    match /chats/{chatId}/{uid}/{fileName} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.size < 25 * 1024 * 1024;
+      allow delete: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}

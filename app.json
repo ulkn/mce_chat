@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "name": "Yaren",
+    "slug": "yaren",
+    "scheme": "yaren",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.ulkn.mcechat",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.ulkn.mcechat",
+      "adaptiveIcon": {
+        "backgroundColor": "#D9532B",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Sesli mesaj kaydedebilmen için mikrofona erişim gerekiyor."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Sohbete fotoğraf gönderebilmen için fotoğraflarına erişim gerekiyor.",
+          "cameraPermission": "Fotoğraf çekip gönderebilmen için kameraya erişim gerekiyor.",
+          "microphonePermission": "Sesli mesaj kaydedebilmen için mikrofona erişim gerekiyor."
+        }
+      ],
+      "expo-image",
+      "expo-sharing",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#FBF7F2",
+          "dark": {
+            "backgroundColor": "#17130F"
+          }
+        }
+      ],
+      "expo-font",
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
